@@ -35,13 +35,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
   // whenever the user visits other than the above routes, just show them the react application:
-  app.get("*", (req, res) => {
+  app.get("/*splat", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
 }
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:` + PORT);
+  console.log(`Server is running on port:` + PORT);
 
   connectDB();
 });
